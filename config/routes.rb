@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :groups
   resources :posts
   get 'home/index'
   devise_for :users
