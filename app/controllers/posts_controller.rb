@@ -7,6 +7,13 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  # PATCH /like
+  def like
+    @post = Post.find(params[:id]) 
+    @like = Like.create(user: current_user, post: @post)
+    redirect_to posts_path 
+  end
+
   # GET /posts/1
   # GET /posts/1.json
   def show
@@ -14,8 +21,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post = Post.new()
   end
 
   # GET /posts/1/edit
@@ -26,6 +32,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
 
     respond_to do |format|
       if @post.save
@@ -72,4 +79,5 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:user_id, :caption)
     end
+
 end
