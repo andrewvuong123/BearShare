@@ -1,0 +1,2 @@
+module GroupUserRoostersHelper
+end

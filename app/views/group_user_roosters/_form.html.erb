@@ -1,0 +1,32 @@
+<%= form_with(model: group_user_rooster, local: true) do |form| %>
+  <% if group_user_rooster.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(group_user_rooster.errors.count, "error") %> prohibited this group_user_rooster from being saved:</h2>
+
+      <ul>
+      <% group_user_rooster.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :isadmin %>
+    <%= form.check_box :isadmin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :group_id %>
+    <%= form.text_field :group_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :group_user_roosters
+  resources :groups
   resources :posts
   get 'home/index'
   devise_for :users

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @group_user_rooster.user %>
+</p>
+
+<p>
+  <strong>Isadmin:</strong>
+  <%= @group_user_rooster.isadmin %>
+</p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @group_user_rooster.group %>
+</p>
+
+<%= link_to 'Edit', edit_group_user_rooster_path(@group_user_rooster) %> |
+<%= link_to 'Back', group_user_roosters_path %>
