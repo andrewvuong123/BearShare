@@ -16,6 +16,7 @@
       <tr>
         <td><%= post.user %></td>
         <td><%= post.caption %></td>
+        <%= link_to "Like (#{post.users_liked.length})", like_path(post), method: :patch %>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
