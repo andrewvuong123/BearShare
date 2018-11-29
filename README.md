@@ -12,10 +12,13 @@ Social Media plays an important role in the way we communicate today. But inform
 ## Models
 
 **USER** <br>
-_Attributes:_ Username, Email, Tag (class of .), Recent posts, Profile picture, Group list
+_Attributes:_ Username, Email, Tag (class of .), Recent posts, Group list
 
 **POSTS**
-_Attributes:_ Post history (using Linked List), DateTime, User IDs, Post Type (Casual, Pinned) 
+_Attributes:_ Post history, DateTime, User IDs
+
+**Likes**
+Has_many: posts, users
 
 **GROUP**
 _Attributes:_ is_private, DateTime, Name, Description <br>
@@ -27,15 +30,16 @@ _Attributes:_ Group, Member Type (Admin, Member), Member
 
 ## Features
 #### Complete
-1. Reply with linked post / create post
-2. Calendar events (pinned post)
-3. Creating Groups with many users
-4. Individual user profile
+1. Create/edit/destroy posts
+2. Creating Groups with many users
+3. Creating user profiles
+4. Liking posts
 
 #### Ambition
 1. Using devise
-2. Make UI Prettier
+2. Have some styling to make the app prettier 
 3. Deploy website on Heroku
+4. Make UI Prettier
 
 ## Division of Labor
 Ryan: writing README.md, deploy app on Heroku
