@@ -15,19 +15,39 @@
  */
 .container {
      max-width: 600px;
-     margin: 0 auto
+     margin: 0 auto;
  }
+
+/* header .container{
+    margin-bottom: 30px;
+ }*/
 
  header {
     display: block;
-    background-color: white;
+    background-color: #F6B71C;
     text-align:center;
     color: #bfd5ec;
-    padding: 10px 0;
+    padding: 0 0 41.5px 0;
+}
+
+header .container{
+}
+
+header .top-banner {
+    background-color: #1A1E41;
+}
+
+header div .align-left{
+    float: left;
+    padding-top: 12px;
+}
+
+header div .align-right{
+    float: right;
+    padding-top: 12px;
 }
 
 header a {
-    display: block;
     text-decoration: none;
     color: #587a9c;
     padding: 10px;
@@ -36,18 +56,33 @@ header a {
 }
 
 header a:hover {
-    background-color: #bfd5ec;
+    /*background-color: #bfd5ec;*/
+    background-color: #1A1E41;
 
 }
 
 header img {
-    height: 60px;
+    padding-top: 8px;
 }
 
 body {
     margin: 0;
     font-family: sans-serif;
-    background-color: #dbdbdb;
+    background-color: white;
+}
+
+.container .post-username {
+    font-weight: bold; 
+}
+
+footer{
+    display: block;
+    background-color: #1A1E41;
+    color: #bfd5ec;
+    text-align: center;
+    bottom : 0;
+    position:fixed;
+    width: 100%;
 }
 
 form {
