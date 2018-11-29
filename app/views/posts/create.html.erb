@@ -1,0 +1,8 @@
+<h1> Creating Post </h1>
+
+<%= form_with local: true, method: "post" do |form| %>
+    	Content: <br>
+    	<%= form.text_field :last_name %>
+    	<br>
+    	<%= form.submit "Create" %>
+    <% end %>

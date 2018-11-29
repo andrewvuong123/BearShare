@@ -11,12 +11,12 @@
     </tr>
   </thead>
 
-  <%= link_to 'New Post', new_post_path %>
+  <%= link_to 'New Post', new_post_path %> <br>
   
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.user %></td>
+        <td><%= post.user.first_name + " " + post.user.last_name %></td>
         <td><%= post.caption %></td>
         <%= link_to "Like (#{post.users_liked.length})", like_path(post), method: :patch %>
         <td><%= link_to 'Show', post %></td>
