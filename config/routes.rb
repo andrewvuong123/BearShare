@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  root to: "posts#index"
+  root to: "home#index"
   get 'home/index'
   
   resources :group_user_roosters

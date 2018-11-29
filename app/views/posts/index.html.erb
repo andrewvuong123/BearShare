@@ -11,6 +11,8 @@
     </tr>
   </thead>
 
+  <%= link_to 'New Post', new_post_path %>
+  
   <tbody>
     <% @posts.each do |post| %>
       <tr>
@@ -27,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+

@@ -39,6 +39,6 @@ _Attributes:_ Group, Member Type (Admin, Member), Member
 
 ## Division of Labor
 Ryan: writing README.md, deploy app on Heroku
-Andrew: 
-Edward: 
-Wen: 
+Andrew: Groups and Roaster Model
+Edward: User Login and Post
+Wen: Web Dev
