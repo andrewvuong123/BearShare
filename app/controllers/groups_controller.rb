@@ -26,10 +26,19 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.created = DateTime.now
+    #
+    #This section is the part that will create the rooster entry
+    #
+    @group_user_rooster = GroupUserRooster.new()
+    @group_user_rooster.user = current_user
+    @group_user_rooster.group = @group
+    @group_user_rooster.isadmin = true
+
     respond_to do |format|
       if @group.save
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
         format.json { render :show, status: :created, location: @group }
+        @group_user_rooster.save
       else
         format.html { render :new }
         format.json { render json: @group.errors, status: :unprocessable_entity }
@@ -37,6 +46,24 @@ class GroupsController < ApplicationController
     end
   end
 
+  def join
+    @group_user_rooster = GroupUserRooster.new()
+    @group_user_rooster.user = current_user
+    @group_user_rooster.group = @group
+    @group_user_rooster.isadmin = false
+
+    @group_user_rooster.save
+
+    redirect_to "/groups"
+  end
+
+  def unjoin
+    @group_user_rooster = GroupUserRooster.all.where(user: current_user).find(group: group)
+    @group_user_rooster.destroy
+
+    redirect_to "/groups"
+  end
+  
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
@@ -54,6 +81,9 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
+    GroupUserRooster.all.where(group: @group).each do |pair|
+      pair.destroy
+    end
     @group.destroy
     respond_to do |format|
       format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }

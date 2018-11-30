@@ -15,17 +15,12 @@
   <tbody>
     <% @group_user_roosters.each do |group_user_rooster| %>
       <tr>
-        <td><%= group_user_rooster.user %></td>
+        <td><%= group_user_rooster.user[:first_name] %> <%= group_user_rooster.user[:last_name] %></td>
         <td><%= group_user_rooster.isadmin %></td>
-        <td><%= group_user_rooster.group %></td>
+        <td><%= group_user_rooster.group[:name] %></td>
         <td><%= link_to 'Show', group_user_rooster %></td>
-        <td><%= link_to 'Edit', edit_group_user_rooster_path(group_user_rooster) %></td>
-        <td><%= link_to 'Destroy', group_user_rooster, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Group User Rooster', new_group_user_rooster_path %>

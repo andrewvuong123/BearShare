@@ -25,7 +25,7 @@ class GroupUserRoostersController < ApplicationController
   # POST /group_user_roosters.json
   def create
     @group_user_rooster = GroupUserRooster.new(group_user_rooster_params)
-
+    #@group.created = DateTime.now
     respond_to do |format|
       if @group_user_rooster.save
         format.html { redirect_to @group_user_rooster, notice: 'Group user rooster was successfully created.' }

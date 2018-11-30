@@ -13,16 +13,51 @@
     </tr>
   </thead>
 
+  <h2> Your Groups <h2>
+
   <tbody>
-    <% @groups.each do |group| %>
+    <% GroupUserRooster.all.where(user: current_user).each do |pair| %>
+      <% group = pair.group %>
       <tr>
         <td><%= group.isprivate %></td>
         <td><%= group.created %></td>
         <td><%= group.name %></td>
         <td><%= group.description %></td>
         <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if pair.isadmin %>
+          <td><%= link_to 'Edit', edit_group_path(group) %></td>
+          <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <% else %>
+          unjoin
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Isprivate</th>
+      <th>Created</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <h2> Other Groups <h2>
+
+  <tbody>
+    <% GroupUserRooster.all.where.not(user: current_user).each do |pair| %>
+      <% group = pair.group %>
+      <tr>
+        <td><%= group.isprivate %></td>
+        <td><%= group.created %></td>
+        <td><%= group.name %></td>
+        <td><%= group.description %></td>
+        <td> <%= link_to 'Join', "groups/join/" + group.id.to_s  , :method => :patch %> </td>
       </tr>
     <% end %>
   </tbody>

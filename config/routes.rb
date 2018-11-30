@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   get 'home/index'
   
   resources :group_user_roosters
-  resources :groups
+  resources :groups, except: :update
   resources :posts
+
+  patch "groups/join/:id", to: "groups#join", as: "join"
   
   devise_for :users
 

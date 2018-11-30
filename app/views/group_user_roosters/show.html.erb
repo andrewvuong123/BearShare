@@ -2,7 +2,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @group_user_rooster.user %>
+  <%= @group_user_rooster.user[:first_name] %> <%= @group_user_rooster.user[:last_name] %>
 </p>
 
 <p>
@@ -12,8 +12,12 @@
 
 <p>
   <strong>Group:</strong>
-  <%= @group_user_rooster.group %>
+  <%= @group_user_rooster.group[:name] %>
 </p>
 
-<%= link_to 'Edit', edit_group_user_rooster_path(@group_user_rooster) %> |
-<%= link_to 'Back', group_user_roosters_path %>
+<% if @group_user_rooster.isadmin %>
+	<h4> If you would like to join this group, please contact this person </h4>
+	<strong>Email:</strong>
+  	<%= @group_user_rooster.user[:email] %>
+<% end %>
+

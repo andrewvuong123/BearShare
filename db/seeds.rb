@@ -7,10 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 10.times do |index|
-  User.create!(first_name: Faker::Name.first_name,
+  user = User.create!(first_name: Faker::Name.first_name,
                     last_name: Faker::Name.last_name,
                     tag: Faker::Number.between(from = 2000, to = 2023),
                     email: Faker::Internet.email,
                     password: Faker::Internet.password
                     )
+  group = Group.create!(isprivate: false,
+  						name: Faker::SiliconValley.company,
+  						description:Faker::SiliconValley.motto,
+  						)
+  GroupUserRooster.create!(user: user, group: group, isadmin: true)
 end
